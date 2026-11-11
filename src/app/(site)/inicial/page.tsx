@@ -6,6 +6,7 @@ import { Categories } from "@/components/sections/Categories";
 import { Hero } from "@/components/sections/Hero";
 import { HeroProteinas } from "@/components/sections/HeroProteinas";
 import { HeroSlider } from "@/components/ui/HeroSlider";
+import { ScrollTopOnEnter } from "@/components/ui/ScrollTopOnEnter";
 import { Nutri } from "@/components/sections/Nutri";
 import { Stores } from "@/components/sections/Stores";
 
@@ -45,6 +46,7 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()) }} />
+      <ScrollTopOnEnter />
       <HeroSlider label="Destaques">
         <Hero />
         <HeroProteinas />

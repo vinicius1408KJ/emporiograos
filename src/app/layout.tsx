@@ -31,7 +31,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    /* data-scroll-behavior: ao trocar de página o Next desliga o scroll suave e vai direto
+     * ao topo. Sem isso, no iPhone a ida ao topo virava animação e parava abaixo do hero. */
+    <html lang="pt-BR" data-scroll-behavior="smooth">
       <head>
         <ScrollToTopOnLoad />
       </head>
