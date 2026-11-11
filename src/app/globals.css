@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ── Tokens da marca ───────────────────────────────────────── */
+@theme {
+  --color-forest: #063b14;
+  --color-deep: #022b0b;
+  --color-lime: #8bcf00;
+  --color-mint: #e8f7e7;
+  --color-cream: #faf7ee;
+  --color-sand: #efe9d8;
+  --color-oat: #ddd3ba;
+  --color-ink: #12200f;
+  --color-muted: #55624f;
+
+  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-rise: rise 0.5s var(--ease-soft) both;
+  --animate-fade: fade 0.25s ease-out both;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-variation-settings: "SOFT" 60, "opsz" 144;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  a, button { touch-action: manipulation; }
+  button { cursor: pointer; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection { background: var(--color-lime); color: var(--color-deep); }
+}
+
+/* Fraunces com o mesmo desenho em títulos e em qualquer texto display */
+.font-display {
+  font-variation-settings: "SOFT" 60, "opsz" 144;
+  letter-spacing: -0.02em;
+}
+
+/* ── Utilitários da marca ──────────────────────────────────── */
+@utility container-site {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 48rem) { padding-inline: 2.5rem; }
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* Entrada discreta ao rolar (ativada por <Reveal>) */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease-soft), transform 0.7s var(--ease-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* Sem JavaScript, nada fica escondido */
+@media (scripting: none) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
