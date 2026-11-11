@@ -33,10 +33,21 @@ export function AutoCarousel({ children, label, itemClass, interval = 2800, clas
     else el.scrollBy({ left: dir * step, behavior: "smooth" });
   }, []);
 
+  /* Só anda sozinho quando está (quase todo) na tela. No Safari do iPhone, mover um
+   * carrossel com snap fora da tela faz a PÁGINA rolar até ele — o site "pulava" para cá. */
+  const visible = useRef(false);
+  useEffect(() => {
+    const el = track.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => (visible.current = entry.isIntersecting), { threshold: 0.6 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = window.setInterval(() => {
-      if (!paused.current && !document.hidden) move(1);
+      if (visible.current && !paused.current && !document.hidden) move(1);
     }, interval);
     return () => window.clearInterval(id);
   }, [interval, move]);
