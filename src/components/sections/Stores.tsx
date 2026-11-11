@@ -1,7 +1,8 @@
 import { Clock, MapPin, Navigation, Phone } from "lucide-react";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { stores, storesSection, type Store } from "@/config/site";
-import { mapsLink, storeTitle, whatsappLink } from "@/lib/links";
+import { mapsLink, storePath, storeTitle, whatsappLink } from "@/lib/links";
 import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { Button, PendingButton } from "@/components/ui/Button";
 import { PhotoFrame } from "@/components/ui/PhotoFrame";
@@ -29,7 +30,11 @@ function StoreCard({ store, index }: { store: Store; index: number }) {
         <p className="eyebrow text-forest/50">
           Unidade {String(index + 1).padStart(2, "0")} · {store.state}
         </p>
-        <h3 className="mt-2 text-3xl text-forest">{store.city}</h3>
+        <h3 className="mt-2 text-3xl text-forest">
+          <Link href={storePath(store)} className="decoration-lime decoration-2 underline-offset-4 hover:underline">
+            {store.city}
+          </Link>
+        </h3>
 
         <dl className="mt-4 flex-1 divide-y divide-forest/10">
           <Row icon={<MapPin className="size-5" aria-hidden />} label="Endereço" value={store.address} />

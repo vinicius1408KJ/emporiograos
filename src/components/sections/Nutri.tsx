@@ -1,6 +1,7 @@
 import { ArrowRight, Quote } from "lucide-react";
 import Image from "next/image";
 import { nutri } from "@/config/site";
+import { InstagramIcon } from "@/components/ui/BrandIcons";
 import { Button } from "@/components/ui/Button";
 import { PhotoFrame } from "@/components/ui/PhotoFrame";
 import { Reveal } from "@/components/ui/Reveal";
@@ -103,12 +104,20 @@ export function Nutri() {
               </Reveal>
             )}
 
-            {nutri.cta.href && (
-              <Reveal delay={340}>
-                <Button href={nutri.cta.href} variant="forest" external className="mt-9">
-                  {nutri.cta.label}
-                  <ArrowRight className="size-4" aria-hidden />
-                </Button>
+            {(nutri.cta.href || nutri.instagram) && (
+              <Reveal delay={340} className="mt-9 flex flex-wrap gap-3">
+                {nutri.cta.href && (
+                  <Button href={nutri.cta.href} variant="forest" external>
+                    {nutri.cta.label}
+                    <ArrowRight className="size-4" aria-hidden />
+                  </Button>
+                )}
+                {nutri.instagram && (
+                  <Button href={nutri.instagram} variant={nutri.cta.href ? "outline-dark" : "forest"} external>
+                    <InstagramIcon className="size-4" aria-hidden />
+                    @{nutri.instagram.replace(/\/$/, "").split("/").pop()}
+                  </Button>
+                )}
               </Reveal>
             )}
           </div>

@@ -29,12 +29,18 @@ export type Photo = {
 
 export type Store = {
   id: string;
+  /** Endereço da página da unidade: /lojas/{slug}. O nome da cidade na URL ajuda no Google. */
+  slug: string;
   /** Nome curto usado no seletor de WhatsApp */
   shortName: string;
   city: string;
   state: string;
   address: string;
   hours: string;
+  /** Mesmo horário no formato que o Google lê (schema.org), ex.: "Mo-Fr 08:00-12:00" */
+  openingHours: readonly string[];
+  /** Texto de apresentação da página da unidade (SEO local) */
+  intro: string;
   /** Telefone para exibição, ex.: "(99) 99999-9999" */
   phoneDisplay: string;
   /** Só números com DDI+DDD, ex.: "5599999999999" */
@@ -93,15 +99,21 @@ export const nav = [
 /** Horário padrão das unidades. Cada linha (\n) aparece em uma linha no card.
  * Se uma loja tiver horário diferente, troque STORE_HOURS pelo texto dela. */
 const STORE_HOURS = "Segunda a sexta: 08h às 12h e 14h às 18h\nSábado: 08h às 12h";
+/** O mesmo horário, no formato do Google. Mudou STORE_HOURS? Mude aqui também. */
+const STORE_OPENING = ["Mo-Fr 08:00-12:00", "Mo-Fr 14:00-18:00", "Sa 08:00-12:00"] as const;
 
 export const stores: Store[] = [
   {
     id: "mangabeiras",
+    slug: "sao-raimundo-das-mangabeiras",
     shortName: "Mangabeiras",
     city: "São Raimundo das Mangabeiras",
     state: "MA",
     address: "Praça do Mercado, 21 · Centro · CEP 65840-000",
     hours: STORE_HOURS,
+    openingHours: STORE_OPENING,
+    intro:
+      "Na Praça do Mercado, no Centro de São Raimundo das Mangabeiras, a Grãos & Folhas reúne grãos, oleaginosas, chás, suplementos e produtos sem glúten e sem lactose, com o atendimento de quem entende de nutrição.",
     phoneDisplay: "(99) 98466-4698",
     whatsapp: "5599984664698",
     mapsUrl: "",
@@ -109,11 +121,15 @@ export const stores: Store[] = [
   },
   {
     id: "riachao",
+    slug: "riachao",
     shortName: "Riachão",
     city: "Riachão",
     state: "MA",
     address: "Rua Alfredo Assis, 28 · Centro · CEP 65990-000",
     hours: STORE_HOURS,
+    openingHours: STORE_OPENING,
+    intro:
+      "No Centro de Riachão, a Grãos & Folhas oferece grãos, sementes, frutas desidratadas, suplementos e produtos funcionais, com a orientação de uma marca fundada por nutricionista.",
     phoneDisplay: "(99) 98478-7729",
     whatsapp: "5599984787729",
     mapsUrl: "https://www.google.com/maps?q=-7.363465309143066,-46.621925354003906&z=17&hl=pt-BR",
@@ -121,11 +137,15 @@ export const stores: Store[] = [
   },
   {
     id: "fortaleza-dos-nogueiras",
+    slug: "fortaleza-dos-nogueiras",
     shortName: "Fortaleza dos Nogueiras",
     city: "Fortaleza dos Nogueiras",
     state: "MA",
     address: "Rua José Sarney, loja 01 · Centro · CEP 65805-000",
     hours: STORE_HOURS,
+    openingHours: STORE_OPENING,
+    intro:
+      "No Centro de Fortaleza dos Nogueiras, a Grãos & Folhas traz produtos naturais e integrais, temperos, chás e suplementos alimentares para quem quer mais saúde no dia a dia.",
     phoneDisplay: "(99) 98454-4385",
     whatsapp: "5599984544385",
     mapsUrl: "https://www.google.com/maps?q=-6.965831756591797,-46.17271041870117&z=17&hl=pt-BR",
@@ -236,6 +256,8 @@ export const nutri = {
   message: "Uma loja criada por quem entende de nutrição e acredita que cuidar de pessoas vai muito além de vender produtos.",
   /** Botão de contato/orientação. href vazio = botão não aparece. */
   cta: { label: "Falar com a Nutri", href: "" },
+  /** Instagram profissional dela. Vazio = botão não aparece. */
+  instagram: "https://www.instagram.com/mara.nutri/",
   photo: { src: "/images/nutri/wilmara-cavalcanti.jpg", alt: "Retrato de Wilmara Cavalcanti, nutricionista e fundadora da Grãos & Folhas", slot: "Foto · Retrato Wilmara Cavalcanti", position: "50% 20%" } as Photo,
 };
 

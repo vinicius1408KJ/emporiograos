@@ -15,3 +15,13 @@ export function mapsLink(store: Store): string {
 }
 
 export const storeTitle = (store: Store) => `${site.name} — ${store.shortName}`;
+
+/** Caminho da página da unidade, ex.: "/lojas/riachao" */
+export const storePath = (store: Store) => `/lojas/${store.slug}`;
+
+/** Lê latitude/longitude do link do Google Maps (formato ?q=lat,lng). Null se não houver. */
+export function storeGeo(store: Store): { latitude: number; longitude: number } | null {
+  const match = store.mapsUrl.match(/[?&]q=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/);
+  if (!match) return null;
+  return { latitude: Number(match[1]), longitude: Number(match[2]) };
+}
