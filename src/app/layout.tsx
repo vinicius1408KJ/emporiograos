@@ -4,6 +4,7 @@ import "@fontsource-variable/fraunces/full-italic.css";
 import "@fontsource-variable/manrope";
 import "./globals.css";
 import { site } from "@/config/site";
+import { ScrollToTopOnLoad } from "@/components/ui/ScrollToTopOnLoad";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -31,7 +32,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <ScrollToTopOnLoad />
+        {children}
+      </body>
     </html>
   );
 }
