@@ -117,9 +117,16 @@
 .reveal[data-reveal="zoom"]  { transform: scale(0.9); filter: blur(8px); }
 .reveal.is-visible { opacity: 1; transform: none; filter: none; }
 
-/* Máscara: a foto é descoberta de baixo para cima enquanto o zoom recua */
-.reveal[data-reveal="mask"] { opacity: 1; clip-path: inset(100% 0% 0% 0%); }
-.reveal[data-reveal="mask"].is-visible { clip-path: inset(0% 0% 0% 0%); }
+/* Máscara: a foto é descoberta de baixo para cima enquanto o zoom recua.
+ * O recorte fica no FILHO, não no bloco observado: o Chrome do PC trata um elemento
+ * 100% recortado como "fora da tela" e a animação nunca disparava (a foto sumia). */
+.reveal[data-reveal="mask"] { opacity: 1; }
+.reveal[data-reveal="mask"] > * {
+  clip-path: inset(100% 0% 0% 0%);
+  transition: clip-path 1.3s cubic-bezier(0.77, 0, 0.18, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-reveal="mask"].is-visible > * { clip-path: inset(0% 0% 0% 0%); }
 .reveal[data-reveal="mask"] img {
   transform: scale(1.18);
   transition: transform 1.8s var(--ease-soft);
@@ -144,13 +151,13 @@
 
 /* Sem JavaScript, nada fica escondido */
 @media (scripting: none) {
-  .reveal, .reveal-stagger > * { opacity: 1; transform: none; filter: none; clip-path: none; }
+  .reveal, .reveal-stagger > *, .reveal[data-reveal="mask"] > * { opacity: 1; transform: none; filter: none; clip-path: none; }
   .reveal img { transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal, .reveal-stagger > * { opacity: 1; transform: none; filter: none; clip-path: none; transition: none; }
+  .reveal, .reveal-stagger > *, .reveal[data-reveal="mask"] > * { opacity: 1; transform: none; filter: none; clip-path: none; transition: none; }
   .reveal img { transform: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
