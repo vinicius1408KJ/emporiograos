@@ -28,7 +28,7 @@ export function Nutri() {
 
         <div className="mt-10 grid gap-12 lg:mt-14 lg:grid-cols-12 lg:items-start lg:gap-16">
           {/* Foto */}
-          <Reveal className="lg:sticky lg:top-28 lg:col-span-5">
+          <Reveal variant="left" className="lg:sticky lg:top-28 lg:col-span-5">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <PhotoFrame
                 photo={nutri.photo}
@@ -52,7 +52,7 @@ export function Nutri() {
 
           {/* Conteúdo */}
           <div className="pt-4 lg:col-span-7 lg:pt-6">
-            <Reveal delay={100}>
+            <Reveal stagger delay={100}>
               <p className="flex items-center gap-2.5 text-sm font-semibold uppercase tracking-[0.16em] text-forest/60">
                 <span aria-hidden className="size-2 rounded-full bg-lime" />
                 {nutri.role}
@@ -62,7 +62,7 @@ export function Nutri() {
               </h2>
             </Reveal>
 
-            <Reveal delay={160}>
+            <Reveal variant="zoom" delay={160}>
               <figure className="relative mt-9 rounded-[2rem] bg-white/70 p-7 ring-1 ring-forest/10 md:p-9">
                 <Quote aria-hidden className="absolute -top-4 left-7 size-9 rounded-full bg-lime p-2 text-deep" />
                 <blockquote className="font-display text-[1.6rem] leading-snug text-forest md:text-[1.9rem]">{nutri.message}</blockquote>

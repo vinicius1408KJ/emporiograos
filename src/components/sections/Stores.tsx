@@ -63,7 +63,7 @@ export function Stores() {
   return (
     <section id="lojas" className="bg-forest py-20 text-cream md:py-32">
       <div className="container-site">
-        <Reveal className="grid gap-4 md:grid-cols-12 md:items-end">
+        <Reveal stagger className="grid gap-4 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
             <p className="eyebrow text-lime">{storesSection.eyebrow}</p>
             <h2 className="mt-4 text-4xl md:text-6xl">{storesSection.title}</h2>
@@ -74,7 +74,7 @@ export function Stores() {
         <ul className="mt-12 grid gap-6 md:mt-16 lg:grid-cols-3">
           {stores.map((store, i) => (
             <li key={store.id}>
-              <Reveal delay={i * 90} className="h-full">
+              <Reveal delay={i * 150} className="h-full">
                 <StoreCard store={store} index={i} />
               </Reveal>
             </li>

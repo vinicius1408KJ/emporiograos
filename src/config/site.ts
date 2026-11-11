@@ -73,7 +73,7 @@ export const site = {
 /* ───────────── REDES SOCIAIS ─────────────
  * Preencha com o link completo. Vazio = o ícone não aparece. */
 export const social = {
-  instagram: "", // ex.: "https://instagram.com/usuario-oficial"
+  instagram: "https://www.instagram.com/emporiograosefolhas/",
   facebook: "",
   tiktok: "",
 } as const;
@@ -116,7 +116,7 @@ export const stores: Store[] = [
     hours: STORE_HOURS,
     phoneDisplay: "(99) 98478-7729",
     whatsapp: "5599984787729",
-    mapsUrl: "",
+    mapsUrl: "https://www.google.com/maps?q=-7.363465309143066,-46.621925354003906&z=17&hl=pt-BR",
     photo: { src: "/images/lojas/riachao.jpg", alt: "Fachada da unidade de Riachão", slot: "Foto · Loja Riachão" },
   },
   {
@@ -128,7 +128,7 @@ export const stores: Store[] = [
     hours: STORE_HOURS,
     phoneDisplay: "(99) 98454-4385",
     whatsapp: "5599984544385",
-    mapsUrl: "",
+    mapsUrl: "https://www.google.com/maps?q=-6.965831756591797,-46.17271041870117&z=17&hl=pt-BR",
     photo: { src: "/images/lojas/fortaleza-dos-nogueiras.jpg", alt: "Fachada da unidade de Fortaleza dos Nogueiras", slot: "Foto · Loja Fortaleza dos Nogueiras" },
   },
 ];
@@ -152,16 +152,29 @@ export const categoriesSection = {
   title: "Qual seu estilo de alimentação?",
   subtitle: "Oferecemos uma linha completa de produtos naturais para quem busca equilíbrio e bem-estar!",
   cta: { label: "Conheça nossos produtos", href: `${HOME}#lojas` },
+  /** Segunda fileira (faixa que rola sozinha). Para trocar o ícone, veja Categories.tsx. */
+  productLines: [
+    "Chás",
+    "Sementes",
+    "Oleaginosas",
+    "Grãos",
+    "Temperos naturais",
+    "Frutas desidratadas",
+    "Produtos naturais",
+    "Produtos funcionais",
+    "Produtos integrais",
+    "Sem glúten e sem lactose",
+    "Suplementos alimentares",
+    "Vitaminas e minerais",
+    "E muito mais...",
+  ],
 };
 
 export const categories: Category[] = [
-  { id: "gourmet", name: "Produtos Gourmet", tint: "honey", photo: { src: demo("1627935722051-395636b0d8a5", 640), alt: "Queijo fatiado em tábua de madeira", slot: "Foto · Gourmet" } },
-  { id: "bebidas", name: "Bebidas Naturais e Sucos Especiais", tint: "mint", photo: { src: demo("1603569283847-aa295f0d016a", 640), alt: "Sucos naturais em garrafas de vidro", slot: "Foto · Bebidas" } },
-  { id: "funcionais", name: "Produtos Naturais Funcionais e Apícolas", tint: "sand", photo: { src: demo("1587049352851-8d4e89133924", 640), alt: "Pote de mel", slot: "Foto · Funcionais e apícolas" } },
-  { id: "graos", name: "Grãos e Cereais", tint: "sage", photo: { src: demo("1542990253-a781e04c0082", 640), alt: "Grãos e feijões variados", slot: "Foto · Grãos e cereais" } },
-  { id: "cafe", name: "Café", tint: "honey", photo: { src: demo("1447933601403-0c6688de566e", 640), alt: "Grãos de café torrado", slot: "Foto · Café" } },
-  { id: "suplementos", name: "Suplementos", tint: "mint", photo: { src: demo("1693996045899-7cf0ac0229c7", 640), alt: "Pote de suplemento em pó com medidor", slot: "Foto · Suplementos" } },
-  { id: "diet", name: "Produtos Diet e Sem Glúten", tint: "sand", photo: { src: demo("1686182689848-283fdd34e72f", 640), alt: "Tigela de granola sobre mesa de madeira", slot: "Foto · Diet e sem glúten" } },
+  { id: "funcionais", name: "Produtos Funcionais", tint: "sand", photo: { src: demo("1587049352851-8d4e89133924", 640), alt: "Pote de mel", slot: "Foto · Funcionais e apícolas" } },
+  { id: "graos", name: "Grãos", tint: "sage", photo: { src: demo("1542990253-a781e04c0082", 640), alt: "Grãos e feijões variados", slot: "Foto · Grãos e cereais" } },
+  { id: "suplementos", name: "Suplementos Alimentares", tint: "mint", photo: { src: demo("1693996045899-7cf0ac0229c7", 640), alt: "Pote de suplemento em pó com medidor", slot: "Foto · Suplementos" } },
+  { id: "diet", name: "Sem Glúten e Sem Lactose", tint: "sand", photo: { src: demo("1686182689848-283fdd34e72f", 640), alt: "Tigela de granola sobre mesa de madeira", slot: "Foto · Diet e sem glúten" } },
 ];
 
 /* ───────────── MARCAS ─────────────
@@ -182,7 +195,7 @@ export const brands: Brand[] = [
   { name: "Nutrata", logo: "/images/marcas/nutrata.png", width: 221, height: 38, onDark: true },
   { name: "Flora Nativa do Brasil", logo: "/images/marcas/flora-nativa.png", width: 200, height: 150, bg: "#f6f1c9" },
   { name: "União Vegetal", logo: "/images/marcas/uniao-vegetal.png", width: 1080, height: 597 },
-  { name: "Moderação", logo: "/images/marcas/moderacao.png", width: 447, height: 447, bg: "#d5782b" },
+  { name: "Moderação", logo: "/images/marcas/moderacao.png", width: 400, height: 400 },
   { name: "Veganutris", logo: "/images/marcas/veganutris.png", width: 918, height: 308 },
   { name: "Puro & Leve", logo: "/images/marcas/puro-e-leve.png", width: 250, height: 250 },
 ];

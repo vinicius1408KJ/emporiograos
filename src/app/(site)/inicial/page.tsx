@@ -4,6 +4,8 @@ import { About } from "@/components/sections/About";
 import { Brands } from "@/components/sections/Brands";
 import { Categories } from "@/components/sections/Categories";
 import { Hero } from "@/components/sections/Hero";
+import { HeroProteinas } from "@/components/sections/HeroProteinas";
+import { HeroSlider } from "@/components/ui/HeroSlider";
 import { Nutri } from "@/components/sections/Nutri";
 import { Stores } from "@/components/sections/Stores";
 
@@ -43,7 +45,10 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()) }} />
-      <Hero />
+      <HeroSlider label="Destaques">
+        <Hero />
+        <HeroProteinas />
+      </HeroSlider>
       <Categories />
       <Brands />
       <About />

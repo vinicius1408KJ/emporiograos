@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { about } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { PhotoFrame } from "@/components/ui/PhotoFrame";
+import { Parallax } from "@/components/ui/Parallax";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function About() {
@@ -13,17 +14,20 @@ export function About() {
       </svg>
 
       <div className="container-site relative grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
-        <Reveal className="relative lg:col-span-6">
-          <PhotoFrame photo={about.photo} tone="moss" sizes="(min-width: 1024px) 45vw, 100vw" className="aspect-[4/5] w-[84%] rounded-t-[999px] rounded-b-[2.5rem]" />
-          <PhotoFrame
-            photo={about.photoDetail}
-            tone="oat"
-            sizes="16rem"
-            className="!absolute -bottom-8 right-0 aspect-square w-[42%] rounded-[2rem] ring-[10px] ring-cream"
-          />
-        </Reveal>
+        <div className="relative lg:col-span-6">
+          <Parallax speed={0.05}>
+            <Reveal variant="mask">
+              <PhotoFrame photo={about.photo} tone="moss" sizes="(min-width: 1024px) 45vw, 100vw" className="aspect-[4/5] w-[84%] rounded-t-[999px] rounded-b-[2.5rem]" />
+            </Reveal>
+          </Parallax>
+          <Parallax speed={-0.1} className="absolute -bottom-8 right-0 w-[42%]">
+            <Reveal variant="zoom" delay={500}>
+              <PhotoFrame photo={about.photoDetail} tone="oat" sizes="16rem" className="aspect-square w-full rounded-[2rem] ring-[10px] ring-cream" />
+            </Reveal>
+          </Parallax>
+        </div>
 
-        <Reveal delay={120} className="lg:col-span-5 lg:col-start-8">
+        <Reveal stagger delay={150} className="lg:col-span-5 lg:col-start-8">
           <p className="eyebrow text-forest/60">{about.eyebrow}</p>
           <h2 className="mt-4 text-4xl text-forest md:text-[3.4rem]">{about.title}</h2>
           <div className="mt-8 border-l-2 border-lime pl-6">
@@ -35,10 +39,12 @@ export function About() {
             <span className="font-display text-xl">{about.signature.name}</span>
             <span className="block text-sm font-semibold uppercase tracking-[0.16em] text-forest/60">{about.signature.line}</span>
           </p>
-          <Button href={about.cta.href} variant="forest" className="mt-9">
-            {about.cta.label}
-            <ArrowRight className="size-4" aria-hidden />
-          </Button>
+          <div>
+            <Button href={about.cta.href} variant="forest" className="mt-9">
+              {about.cta.label}
+              <ArrowRight className="size-4" aria-hidden />
+            </Button>
+          </div>
         </Reveal>
       </div>
     </section>

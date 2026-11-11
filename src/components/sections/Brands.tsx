@@ -57,14 +57,14 @@ export function Brands() {
   return (
     <section id="marcas" className="bg-white py-20 md:py-28">
       <div className="container-site">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <Reveal stagger className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-forest/60">Marcas parceiras</p>
           <h2 className="mt-4 text-4xl text-forest md:text-5xl">{brandsSection.title}</h2>
           <p className="mt-4 text-lg text-muted">{brandsSection.subtitle}</p>
         </Reveal>
       </div>
 
-      <Reveal delay={100} className="mt-12 md:mt-14">
+      <Reveal variant="right" delay={250} className="mt-12 md:mt-14">
         <div
           role="region"
           aria-label="Marcas parceiras"

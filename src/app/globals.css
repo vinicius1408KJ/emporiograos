@@ -101,23 +101,57 @@
   &::-webkit-scrollbar { display: none; }
 }
 
-/* Entrada discreta ao rolar (ativada por <Reveal>) */
+/* ───── Animações ao rolar (ativadas por <Reveal>) ───── */
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.7s var(--ease-soft), transform 0.7s var(--ease-soft);
+  transition:
+    opacity 0.9s var(--ease-soft),
+    transform 1s var(--ease-soft),
+    filter 1s var(--ease-soft),
+    clip-path 1.3s cubic-bezier(0.77, 0, 0.18, 1);
   transition-delay: var(--reveal-delay, 0ms);
 }
-.reveal.is-visible { opacity: 1; transform: none; }
+.reveal[data-reveal="up"]    { transform: translateY(44px); }
+.reveal[data-reveal="left"]  { transform: translateX(-56px); }
+.reveal[data-reveal="right"] { transform: translateX(56px); }
+.reveal[data-reveal="zoom"]  { transform: scale(0.9); filter: blur(8px); }
+.reveal.is-visible { opacity: 1; transform: none; filter: none; }
+
+/* Máscara: a foto é descoberta de baixo para cima enquanto o zoom recua */
+.reveal[data-reveal="mask"] { opacity: 1; clip-path: inset(100% 0% 0% 0%); }
+.reveal[data-reveal="mask"].is-visible { clip-path: inset(0% 0% 0% 0%); }
+.reveal[data-reveal="mask"] img {
+  transform: scale(1.18);
+  transition: transform 1.8s var(--ease-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal[data-reveal="mask"].is-visible img { transform: none; }
+
+/* Sequência: cada filho entra um pouco depois do anterior */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s var(--ease-soft), transform 0.9s var(--ease-soft);
+  transition-delay: calc(var(--reveal-delay, 0ms) + var(--i, 0) * 110ms);
+}
+.reveal-stagger > :nth-child(2) { --i: 1; }
+.reveal-stagger > :nth-child(3) { --i: 2; }
+.reveal-stagger > :nth-child(4) { --i: 3; }
+.reveal-stagger > :nth-child(5) { --i: 4; }
+.reveal-stagger > :nth-child(6) { --i: 5; }
+.reveal-stagger > :nth-child(n + 7) { --i: 6; }
+.reveal-stagger.is-visible > * { opacity: 1; transform: none; }
 
 /* Sem JavaScript, nada fica escondido */
 @media (scripting: none) {
-  .reveal { opacity: 1; transform: none; }
+  .reveal, .reveal-stagger > * { opacity: 1; transform: none; filter: none; clip-path: none; }
+  .reveal img { transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal, .reveal-stagger > * { opacity: 1; transform: none; filter: none; clip-path: none; transition: none; }
+  .reveal img { transform: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

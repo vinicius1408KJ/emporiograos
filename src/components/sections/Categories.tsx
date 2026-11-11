@@ -1,4 +1,20 @@
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Cherry,
+  ChefHat,
+  Cookie,
+  Dumbbell,
+  Flower2,
+  HeartPulse,
+  Leaf,
+  Nut,
+  Pill,
+  Sparkles,
+  Sprout,
+  Wheat,
+  WheatOff,
+  type LucideIcon,
+} from "lucide-react";
 import { categories, categoriesSection, type Category } from "@/config/site";
 import { AutoCarousel } from "@/components/ui/AutoCarousel";
 import { Button } from "@/components/ui/Button";
@@ -39,22 +55,77 @@ function CategoryItem({ category, index }: { category: Category; index: number }
   );
 }
 
+/** Ícone de cada linha de produto (nome igual ao de categoriesSection.productLines). */
+const lineIcons: Record<string, LucideIcon> = {
+  "Chás": Leaf,
+  "Sementes": Sprout,
+  "Oleaginosas": Nut,
+  "Grãos": Wheat,
+  "Temperos naturais": ChefHat,
+  "Frutas desidratadas": Cherry,
+  "Produtos naturais": Flower2,
+  "Produtos funcionais": HeartPulse,
+  "Produtos integrais": Cookie,
+  "Sem glúten e sem lactose": WheatOff,
+  "Suplementos alimentares": Dumbbell,
+  "Vitaminas e minerais": Pill,
+  "E muito mais...": Sparkles,
+};
+
+/** Uma volta da faixa: renderizada duas vezes para o loop ficar contínuo. */
+function LinesRow({ hidden = false }: { hidden?: boolean }) {
+  return (
+    <ul aria-hidden={hidden || undefined} className={`flex shrink-0 ${hidden ? "motion-reduce:hidden" : ""}`}>
+      {categoriesSection.productLines.map((name) => {
+        const Icon = lineIcons[name] ?? Leaf;
+        return (
+          // padding (e não gap) para o deslocamento de -50% fechar exato
+          <li key={name} className="shrink-0 px-2 py-2">
+            <span className="flex items-center gap-3 whitespace-nowrap rounded-full bg-white py-2 pl-2 pr-6 text-[0.95rem] font-semibold text-forest shadow-[0_10px_30px_-22px_rgba(2,43,11,0.6)] ring-1 ring-forest/10 transition duration-300 ease-soft hover:-translate-y-0.5 hover:ring-lime md:text-base">
+              <span className="grid size-10 place-items-center rounded-full bg-mint text-forest">
+                <Icon className="size-5" strokeWidth={1.75} aria-hidden />
+              </span>
+              {name}
+            </span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export function Categories() {
   return (
     <section id="categorias" className="bg-cream py-20 md:py-28">
       <div className="container-site">
-        <Reveal className="mx-auto max-w-2xl text-center">
+        <Reveal stagger className="mx-auto max-w-2xl text-center">
           <p className="font-display text-2xl italic text-lime [-webkit-text-stroke:0.4px_var(--color-forest)]">{categoriesSection.eyebrow}</p>
           <h2 className="mt-3 text-4xl text-forest md:text-5xl">{categoriesSection.title}</h2>
           <p className="mt-4 text-lg text-muted">{categoriesSection.subtitle}</p>
         </Reveal>
 
-        <Reveal delay={100} className="mt-12 md:mt-16">
-          <AutoCarousel label="Categorias de produtos" itemClass="basis-1/2 sm:basis-1/3 lg:basis-1/5" className="-mx-3 md:-mx-5">
+        <Reveal variant="zoom" delay={250} className="mt-12 md:mt-16">
+          <AutoCarousel label="Categorias de produtos" itemClass="basis-1/2 sm:basis-1/3 lg:basis-1/4" className="-mx-3 md:-mx-5">
             {categories.map((cat, i) => (
               <CategoryItem key={cat.id} category={cat} index={i} />
             ))}
           </AutoCarousel>
+        </Reveal>
+
+        <Reveal variant="left" delay={350} className="mt-10 md:mt-12">
+          <div
+            role="region"
+            aria-label="Linhas de produtos"
+            className="group overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] motion-reduce:no-scrollbar motion-reduce:overflow-x-auto"
+          >
+            <div
+              className="flex w-max animate-marquee [animation-direction:reverse] group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused] motion-reduce:animate-none"
+              style={{ animationDuration: "45s" }}
+            >
+              <LinesRow />
+              <LinesRow hidden />
+            </div>
+          </div>
         </Reveal>
 
         <Reveal delay={160} className="mt-12 text-center md:mt-14">
