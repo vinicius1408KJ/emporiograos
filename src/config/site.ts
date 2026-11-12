@@ -1,6 +1,6 @@
 /**
  * ─────────────────────────────────────────────────────────────
- *  EMPÓRIO GRÃOS & FOLHAS — CONFIGURAÇÃO CENTRAL
+ *  GRÃOS E FOLHAS EMPÓRIO NATURAL — CONFIGURAÇÃO CENTRAL
  * ─────────────────────────────────────────────────────────────
  *  Tudo que é informação comercial ou conteúdo editável mora aqui.
  *  Nenhum componente guarda telefone, endereço, link ou texto de marca.
@@ -57,8 +57,8 @@ export type Brand = { name: string; logo?: string; width?: number; height?: numb
 /* ───────────── MARCA ───────────── */
 
 export const site = {
-  name: "Empório Grãos & Folhas",
-  shortName: "Grãos & Folhas",
+  name: "Grãos e Folhas Empório Natural",
+  shortName: "Grãos e Folhas Empório Natural",
   url: "https://graosefolhasemporio.com.br",
   tagline: "Produtos naturais, grãos, suplementos e alimentos saudáveis.",
   description:
@@ -72,7 +72,7 @@ export const site = {
     vertical: { src: "/images/marca/logo-vertical.svg", width: 659, height: 401 },
   },
   /** Mensagem que já vem escrita quando o cliente abre o WhatsApp */
-  whatsappMessage: "Olá! Vim pelo site do Empório Grãos & Folhas.",
+  whatsappMessage: "Olá! Vim pelo site da Grãos e Folhas Empório Natural.",
   utilityBar: "São Raimundo das Mangabeiras · Riachão · Fortaleza dos Nogueiras — MA",
 } as const;
 
@@ -113,7 +113,7 @@ export const stores: Store[] = [
     hours: STORE_HOURS,
     openingHours: STORE_OPENING,
     intro:
-      "Na Praça do Mercado, no Centro de São Raimundo das Mangabeiras, a Grãos & Folhas reúne grãos, oleaginosas, chás, suplementos e produtos sem glúten e sem lactose, com o atendimento de quem entende de nutrição.",
+      "Na Praça do Mercado, no Centro de São Raimundo das Mangabeiras, a Grãos e Folhas Empório Natural reúne grãos, oleaginosas, chás, suplementos e produtos sem glúten e sem lactose, com o atendimento de quem entende de nutrição.",
     phoneDisplay: "(99) 98466-4698",
     whatsapp: "5599984664698",
     mapsUrl: "",
@@ -129,7 +129,7 @@ export const stores: Store[] = [
     hours: STORE_HOURS,
     openingHours: STORE_OPENING,
     intro:
-      "No Centro de Riachão, a Grãos & Folhas oferece grãos, sementes, frutas desidratadas, suplementos e produtos funcionais, com a orientação de uma marca fundada por nutricionista.",
+      "No Centro de Riachão, a Grãos e Folhas Empório Natural oferece grãos, sementes, frutas desidratadas, suplementos e produtos funcionais, com a orientação de uma marca fundada por nutricionista.",
     phoneDisplay: "(99) 98478-7729",
     whatsapp: "5599984787729",
     mapsUrl: "https://www.google.com/maps?q=-7.363465309143066,-46.621925354003906&z=17&hl=pt-BR",
@@ -145,7 +145,7 @@ export const stores: Store[] = [
     hours: STORE_HOURS,
     openingHours: STORE_OPENING,
     intro:
-      "No Centro de Fortaleza dos Nogueiras, a Grãos & Folhas traz produtos naturais e integrais, temperos, chás e suplementos alimentares para quem quer mais saúde no dia a dia.",
+      "No Centro de Fortaleza dos Nogueiras, a Grãos e Folhas Empório Natural traz produtos naturais e integrais, temperos, chás e suplementos alimentares para quem quer mais saúde no dia a dia.",
     phoneDisplay: "(99) 98454-4385",
     whatsapp: "5599984544385",
     mapsUrl: "https://www.google.com/maps?q=-6.965831756591797,-46.17271041870117&z=17&hl=pt-BR",
@@ -228,7 +228,7 @@ export const about = {
   missionLabel: "Nossa missão",
   text: "Inspirar escolhas mais saudáveis e promover qualidade de vida, oferecendo produtos selecionados com excelência, ética e responsabilidade.",
   missionCommitment: "Nosso compromisso é transformar cada atendimento em uma experiência de cuidado, confiança e bem-estar.",
-  signature: { name: "Grãos & Folhas", line: "Sua loja saudável completa." },
+  signature: { name: "Grãos e Folhas Empório Natural", line: "Sua loja saudável completa." },
   cta: { label: "Conheça nossa história", href: "/sobre" },
   /** Parágrafos da página /sobre. Vazio = aviso de "história em breve". */
   story: [] as string[],
@@ -244,13 +244,13 @@ export const nutri = {
   role: "Nutricionista · Fundadora",
   crn: "CRN 1930",
   bio: [
-    "Na Grãos & Folhas, cuidar da sua saúde é o nosso propósito.",
+    "Na Grãos e Folhas Empório Natural, cuidar da sua saúde é o nosso propósito.",
     "Fundada pela nutricionista Wilmara Cavalcanti, com mais de 20 anos de formação e especialização em Nutrição Clínica, Funcional, Esportiva e Fitoterápica, nossa marca nasceu do compromisso de unir conhecimento, qualidade e bem-estar.",
     "Nosso diferencial está em oferecer não apenas produtos criteriosamente selecionados, mas também orientação nutricional especializada, promovendo escolhas mais conscientes, responsáveis e seguras, respeitando as necessidades individuais de cada cliente.",
     "Aqui, a ciência orienta, a qualidade é compromisso e o cuidado faz parte da nossa essência.",
   ],
   /** Fecho em destaque, logo abaixo da bio */
-  signature: "Grãos & Folhas: sua loja saudável completa.",
+  signature: "Grãos e Folhas Empório Natural: sua loja saudável completa.",
   credentials: ["+20 anos de formação", "Nutrição Clínica", "Nutrição Funcional", "Nutrição Esportiva", "Fitoterapia"],
   /** Frase em destaque da seção */
   message: "Uma loja criada por quem entende de nutrição e acredita que cuidar de pessoas vai muito além de vender produtos.",
@@ -258,7 +258,7 @@ export const nutri = {
   cta: { label: "Falar com a Nutri", href: "" },
   /** Instagram profissional dela. Vazio = botão não aparece. */
   instagram: "https://www.instagram.com/mara.nutri/",
-  photo: { src: "/images/nutri/wilmara-cavalcanti.jpg", alt: "Retrato de Wilmara Cavalcanti, nutricionista e fundadora da Grãos & Folhas", slot: "Foto · Retrato Wilmara Cavalcanti", position: "50% 20%" } as Photo,
+  photo: { src: "/images/nutri/wilmara-cavalcanti.jpg", alt: "Retrato de Wilmara Cavalcanti, nutricionista e fundadora da Grãos e Folhas Empório Natural", slot: "Foto · Retrato Wilmara Cavalcanti", position: "50% 20%" } as Photo,
 };
 
 /* ───────────── LOJAS (seção) ───────────── */
