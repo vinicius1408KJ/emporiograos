@@ -52,7 +52,8 @@ export type Store = {
 
 export type Category = { id: string; name: string; photo: Photo; tint: "mint" | "sand" | "honey" | "sage" };
 /** onDark: logo clara (branca/cinza) que precisa de fundo escuro para aparecer */
-/** bg: logo com fundo próprio (quadrada/colorida) — o cartão assume essa cor e a imagem ocupa a altura toda */
+/** bg: logo com fundo próprio (quadrada/colorida) — o cartão assume essa cor e a imagem ocupa a altura toda.
+ *  bg + onDark: logo clara/transparente sobre essa cor, com respiro (ex.: Nutrata em preto) */
 export type Brand = { name: string; logo?: string; width?: number; height?: number; onDark?: boolean; bg?: string };
 /* ───────────── MARCA ───────────── */
 
@@ -207,12 +208,12 @@ export const brandsSection = {
 };
 
 export const brands: Brand[] = [
-  { name: "Vitafor", logo: "/images/marcas/vitafor.png", width: 201, height: 62, onDark: true },
+  { name: "Vitafor", logo: "/images/marcas/vitafor.jpg", width: 446, height: 448, bg: "#ffffff" },
   { name: "Equaliv", logo: "/images/marcas/equaliv.svg", width: 1920, height: 1080 },
   { name: "True", logo: "/images/marcas/true.svg", width: 200, height: 74 },
   { name: "Adaptogen", logo: "/images/marcas/adaptogen.svg", width: 242, height: 33 },
   { name: "Shark Pro", logo: "/images/marcas/shark-pro.png", width: 329, height: 197 },
-  { name: "Nutrata", logo: "/images/marcas/nutrata.png", width: 221, height: 38, onDark: true },
+  { name: "Nutrata", logo: "/images/marcas/nutrata.png", width: 1080, height: 292, onDark: true, bg: "#000000" },
   { name: "Flora Nativa do Brasil", logo: "/images/marcas/flora-nativa.png", width: 200, height: 150, bg: "#f6f1c9" },
   { name: "União Vegetal", logo: "/images/marcas/uniao-vegetal.png", width: 1080, height: 597 },
   { name: "Moderação", logo: "/images/marcas/moderacao.png", width: 400, height: 400 },

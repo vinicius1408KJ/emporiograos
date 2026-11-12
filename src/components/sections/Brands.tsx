@@ -6,14 +6,17 @@ function BrandCard({ brand }: { brand: Brand }) {
     ? "border-forest bg-forest hover:shadow-[0_18px_40px_-22px_rgba(2,43,11,0.7)]"
     : "border-oat/70 bg-white hover:border-forest/25 hover:shadow-[0_18px_40px_-26px_rgba(2,43,11,0.5)]";
 
+  // bg + onDark: cor própria no cartão, mas logo com respiro (não ocupa a altura toda)
+  const fullBleed = brand.bg && !brand.onDark;
+
   return (
     <div
-      className={`grid h-28 place-items-center overflow-hidden rounded-2xl border transition duration-300 ease-soft hover:-translate-y-1 md:h-32 ${brand.bg ? "border-transparent" : `px-6 ${surface}`}`}
+      className={`relative grid h-28 place-items-center overflow-hidden rounded-2xl border transition duration-300 ease-soft hover:-translate-y-1 md:h-32 ${fullBleed ? (brand.bg?.toLowerCase() === "#ffffff" ? "border-oat/70" : "border-transparent") : brand.bg ? "border-transparent px-6 hover:shadow-[0_18px_40px_-22px_rgba(0,0,0,0.6)]" : `px-6 ${surface}`}`}
       style={brand.bg ? { backgroundColor: brand.bg } : undefined}
     >
-      {brand.logo && brand.bg ? (
+      {brand.logo && fullBleed ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={brand.logo} alt={brand.name} width={brand.width} height={brand.height} loading="lazy" decoding="async" draggable={false} className="h-full w-auto object-contain" />
+        <img src={brand.logo} alt={brand.name} width={brand.width} height={brand.height} loading="lazy" decoding="async" draggable={false} className="absolute inset-0 size-full object-contain" />
       ) : brand.logo ? (
         // <img> simples: aceita SVG e PNG mantendo a proporção original
         // eslint-disable-next-line @next/next/no-img-element
