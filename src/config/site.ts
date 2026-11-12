@@ -59,7 +59,7 @@ export type Brand = { name: string; logo?: string; width?: number; height?: numb
 export const site = {
   name: "Empório Grãos & Folhas",
   shortName: "Grãos & Folhas",
-  url: "https://emporiograos.com.br",
+  url: "https://graosefolhasemporio.com.br",
   tagline: "Produtos naturais, grãos, suplementos e alimentos saudáveis.",
   description:
     "Rede de lojas de produtos naturais, grãos, suplementos e alimentos funcionais no sul do Maranhão. Três unidades: São Raimundo das Mangabeiras, Riachão e Fortaleza dos Nogueiras.",
