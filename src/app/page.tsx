@@ -32,7 +32,7 @@ export default function AccessPage() {
           <h1 className="mt-10 text-4xl md:text-[2.75rem]">
             Que bom ter você <em className="font-light text-lime">por aqui.</em>
           </h1>
-          <p className="mx-auto mt-4 max-w-sm text-cream/70">Escolha a unidade mais próxima para falar com a gente ou conheça o Empório no site.</p>
+          <p className="mx-auto mt-4 max-w-sm text-cream/70">Escolha a unidade mais próxima para falar com a gente ou conheça a Grãos e Folhas no site.</p>
         </header>
 
         <div className="mt-9 animate-rise [animation-delay:100ms]">
